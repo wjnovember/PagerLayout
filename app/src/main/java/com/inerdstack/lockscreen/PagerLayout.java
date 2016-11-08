@@ -307,6 +307,30 @@ public class PagerLayout extends LinearLayout {
     }
 
     /**
+     * 设置背景颜色
+     * @param color
+     */
+    public void setBackgroundColor(int color) {
+        mContainer.setBackgroundColor(color);
+    }
+
+    /**
+     * 设置背景图片
+     * @param background
+     */
+    public void setBackground(Drawable background) {
+        mContainer.setBackground(background);
+    }
+
+    /**
+     * 设置背景图片资源id
+     * @param resId
+     */
+    public void setBackgroundResource(int resId) {
+        mContainer.setBackgroundResource(resId);
+    }
+
+    /**
      * 获取视图控件
      * @param viewId
      * @return
