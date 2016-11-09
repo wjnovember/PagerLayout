@@ -105,7 +105,7 @@ public class PagerLayout extends LinearLayout {
                     // 获取视图容器滚动的y轴距离
                     int scrollY = this.getScrollY();
                     // 未超过制定距离，则返回原来位置
-                    if (scrollY < 400) {
+                    if (scrollY < 300) {
                         // 准备滚动到原来位置
                         prepareScroll(0, 0);
                     } else { // 超过指定距离，则上滑隐藏
