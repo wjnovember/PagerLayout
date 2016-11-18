@@ -126,7 +126,6 @@ public class PagerLayout extends LinearLayout {
                     } else {
                         return true;
                     }
-//                    break;
                 default:
                     //其余情况交给GestureDetector手势处理
                     return mGestureDetector.onTouchEvent(event);
@@ -184,13 +183,8 @@ public class PagerLayout extends LinearLayout {
 
     //设置滚动的相对偏移
     protected void beginScroll(int dx, int dy) {
-        System.out.println("smoothScrollBy()---> dx="+dx+",dy="+dy);
         //第一,二个参数起始位置;第三,四个滚动的偏移量
         mScroller.startScroll(mScroller.getFinalX(), mScroller.getFinalY(), dx, dy);
-        System.out.println("smoothScrollBy()---> " +
-                "mScroller.getFinalX()="+mScroller.getFinalX()+","+
-                "mScroller.getFinalY()="+mScroller.getFinalY());
-
         //必须执行invalidate()从而调用computeScroll()
         invalidate();
     }

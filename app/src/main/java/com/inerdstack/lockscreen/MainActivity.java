@@ -26,13 +26,6 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (XRecyclerView) findViewById(R.id.xrecyclerview);
         myLinearLayout = (PagerLayout) findViewById(R.id.lock_view);
 
-//        myLinearLayout.setLayout(this, R.layout.lock_view);
-//        myLinearLayout.setButtonClickListener(R.id.btn, new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "您点击了按钮", Toast.LENGTH_SHORT).show();
-//            }
-//        });
         myLinearLayout.setLayout(this, R.layout.slide_layout);
 
         mRecyclerView.setHasFixedSize(true);
@@ -48,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 //                        myLinearLayout.show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                            }
+                        }, 500);
                         mRecyclerView.refreshComplete();
                     }
                 }, 500);
@@ -63,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final float[] downY = {0};
+
         mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                final float[] downY = {0};
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         downY[0] = event.getY();
@@ -75,11 +75,9 @@ public class MainActivity extends AppCompatActivity {
                         float curY = event.getY();
                         float delta = curY - downY[0];
                         int screen = DensityUtil.getWindowHeight(MainActivity.this);
-                        if (delta > screen - 400) {
+                        if (delta > screen - DensityUtil.dip2px(MainActivity.this, 240)) {
                             myLinearLayout.show();
                         }
-                        Log.i("scro", "delta--" + delta);
-                        Log.i("scro", "screen--" + screen);
                         break;
                 }
                 return false;
